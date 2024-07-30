@@ -1,19 +1,22 @@
-import { Text, View } from "react-native";
-import CustomIcon from "@/components/CustomIcon";
-import { upComingMovies,popularMovies,searchMovies } from "@/api/apicalls";
-export default function Index() {
-  console.log(searchMovies('Avengers'));
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import TabNavigator from '../app/navigatiors/TabNavigatior'; // Đường dẫn đúng tới TabNavigator
+import MovieDetailsScreen from './screens/MovieDetailsScreen';
+import SeatBookingScreen from './screens/SeatBookingScreen';
+
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-      <CustomIcon name='search' size={25} />
-      
-    </View>
+    <NavigationContainer independent={true}>
+      <Stack.Navigator>
+        <Stack.Screen name="Tab" component={TabNavigator}/>
+        <Stack.Screen name="SeatBooking" component={SeatBookingScreen} />
+        <Stack.Screen name="MovieDetails" component={MovieDetailsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
+
+export default App;
