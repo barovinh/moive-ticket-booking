@@ -1,12 +1,17 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet,TouchableOpacity } from 'react-native';
 
 interface HomeScreenProps {}
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}:any) => {
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={()=>{
+        navigation.push('MovieDetails');
+      }}>
       <Text>HomeScreen</Text>
+        
+      </TouchableOpacity>
     </View>
   );
 };
